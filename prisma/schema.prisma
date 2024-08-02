@@ -20,5 +20,5 @@ model EmailSchedule {
   repetition String?
   schedule   DateTime?
   createdAt  DateTime? @default(now())
-  
+   attachments String[]  @default([])
 }

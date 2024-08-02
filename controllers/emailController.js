@@ -3,7 +3,7 @@ const { scheduleEmail, weekToDayMap } = require("../utils/emailHelper");
 const emailService = require("../services/emailService");
 const scheduleEmailHandler = async (req, res) => {
   try {
-    const { recipient, subject, body, day, date, time, repetition, schedule } =
+    const { recipient, subject, body, day, date, time, repetition, schedule,attachments  } =
       req.body;
 
     if (!recipient || !subject || !body) {
@@ -43,6 +43,7 @@ const scheduleEmailHandler = async (req, res) => {
       body,
       scheduleData,
       repetition,
+      attachments ,
     });
 
     res.status(201).json(email);

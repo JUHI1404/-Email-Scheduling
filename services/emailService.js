@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 const createEmailSchedule = async (data) => {
   try {
-    const { recipient, subject, body, scheduleData, repetition } = data;
+    const { recipient, subject, body, scheduleData, repetition,attachments  } = data;
 
     if (!recipient || !subject || !body || !scheduleData) {
       throw new Error("Missing required fields");
@@ -20,6 +20,7 @@ const createEmailSchedule = async (data) => {
             body,
             ...scheduleData,
             repetition,
+            attachments ,
           }
         : {
             recipient,
@@ -27,6 +28,7 @@ const createEmailSchedule = async (data) => {
             body,
             schedule: scheduleData,
             repetition,
+            attachments ,
           },
     });
   } catch (error) {
