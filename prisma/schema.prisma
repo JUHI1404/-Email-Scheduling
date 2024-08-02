@@ -9,6 +9,20 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
+}
+
+
+model EmailSchedule {
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  recipient  String
+  subject    String
+  body       String
+  date       String?
+  day        String?
+  time       String?
+  repetition String?
+  schedule   DateTime?
+  createdAt  DateTime? @default(now())
 }
